@@ -14,7 +14,7 @@ class SalutionController extends Controller
      */
     public function index(): Response
     {
-        return Inertia::render('Salution/Index', [
+        return Inertia::render('Salutions/Index', [
 
         ]);
     }
