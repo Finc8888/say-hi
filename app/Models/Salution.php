@@ -6,5 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Salution extends Model
 {
-    //
+    protected $fillable = [
+        'message',
+    ];
 }
