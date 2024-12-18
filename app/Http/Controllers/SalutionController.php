@@ -16,6 +16,7 @@ class SalutionController extends Controller
     public function index(): Response
     {
         return Inertia::render('Salutions/Index', [
+            'salutions' => Salution::with('user:id,name')->latest()->get(),
 
         ]);
     }
