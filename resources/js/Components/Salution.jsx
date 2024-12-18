@@ -1,4 +1,8 @@
-import React from "react";
+import React from 'react';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+
+dayjs.extend(relativeTime);
 
 export default function Salution({ salution }) {
     return (
@@ -18,7 +22,7 @@ export default function Salution({ salution }) {
                 <div className="flex justify-between items-center">
                     <div>
                         <span className="text-gray-800">{salution.user.name}</span>
-                        <small className="ml-2 text-sm text-gray-600">{new Date(salution.created_at).toLocaleString()}</small>
+                        <small className="ml-2 text-sm text-gray-600">{dayjs(salution.created_at).fromNow()}</small>
                     </div>
                 </div>
                 <p className="mt-4 text-lg text-gray-900">{salution.message}</p>
