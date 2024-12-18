@@ -1,10 +1,11 @@
 import React from 'react';
 import AuthenticatedLayoutf from '@/Layouts/AuthenticatedLayout';
+import Salution from '@/Components/Salution';
 import InputError from '@/Components/InputError';
 import PrimaryButton from '@/Components/PrimaryButton';
 import { useForm, Head } from '@inertiajs/react';
 
-export default function Index({ auth }) {
+export default function Index({ auth, salutions }) {
     const { data, setData, post, processing, reset, errors } = useForm({
         message: '',
     });
@@ -39,6 +40,12 @@ export default function Index({ auth }) {
                     <InputError message={errors.message} className="mt-2" />
                     <PrimaryButton className="mt-4" disabled={processing}>Say Hi!</PrimaryButton>
                 </form>
+
+                <div className="mt-6 bg-white shadow-sm rounded-lg divide-y">
+                    {salutions.map(salution =>
+                        <Salution key={salution.id} salution={salution} />
+                    )}
+                </div>
             </div>
         </AuthenticatedLayoutf>
     );
