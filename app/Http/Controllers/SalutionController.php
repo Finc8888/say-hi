@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Salution;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -62,9 +63,17 @@ class SalutionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Salution $salution)
+    public function update(Request $request, Salution $salution): RedirectResponse
     {
-        //
+        Gate::authorize('update', $salution);
+
+        $validated = $request->validate([
+            'message' => 'required|string|max:255',
+        ]);
+
+        $salution->update($validated);
+
+        return redirect(route('salutions.index'));
     }
 
     /**
