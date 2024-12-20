@@ -63,6 +63,9 @@ export default function Salution({ salution }) {
                                 <button className="block w-full px-4 py-2 text-left text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 transiton duration-150 ease-in-out" onClick={() => setEditing(true)}>
                                     Edit
                                 </button>
+                                <Dropdown.Link as ="button" href={route('salutions.destroy', salution.id)} method="delete">
+                                    Delete
+                                </Dropdown.Link>
                             </Dropdown.Content>
                         </Dropdown>
 
