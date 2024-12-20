@@ -79,8 +79,12 @@ class SalutionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Salution $salution)
+    public function destroy(Salution $salution): RedirectResponse
     {
-        //
+        Gate::authorize('delete', $salution);
+
+        $salution->delete();
+
+        return redirect(route('salutions.index'));
     }
 }
