@@ -45,7 +45,7 @@ class SalutionPolicy
      */
     public function delete(User $user, Salution $salution): bool
     {
-        return false;
+        return $this->update($user, $salution);
     }
 
     /**
